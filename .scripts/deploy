@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function deploy {
+    if [ "$1" == "ic" ]; then
+        dfx deploy --network=ic
+    else
+        adminId=$(npx ts-node .harness/keys/get.ts admin)
+        dfx deploy
+        dfx canister call motoko-boilerplate addAdmin "(principal \"$adminId\")"
+    fi
+}
+
+deploy "$@"

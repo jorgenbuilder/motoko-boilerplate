@@ -1,0 +1,15 @@
+#!/bin/bash
+
+dfx generate
+
+cp -r src/declarations/* ./.harness/actors/interface
+pushd ./.harness/actors/interface
+    rm **/index.js
+    rm **/*.did
+    for f in **/*.js; do
+        sed -i '' -e '$ d' "$f"
+        sed -i '' -e 's/export const idlFactory = ({ IDL }) => {/import { IDL } from \"@dfinity\/candid\";\nexport const idlFactory : IDL.InterfaceFactory = ({ IDL }) => {/g' "$f"
+        mv -- "$f" "${f%.js}.ts"
+    done
+popd
+rm -r src/declarations

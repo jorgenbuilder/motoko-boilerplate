@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "lib": [
+      "DOM",
+      "es5"
+    ],
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true
+  },
+  "include": [
+    ".harness/**/*"
+  ]
+}
