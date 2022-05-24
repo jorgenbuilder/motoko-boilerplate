@@ -22,7 +22,6 @@ jobs:
           node-version: '17'
       - name: Canister test suite
         run: |
-          cd canister
           npm i
           npm run make-admin
           npm run test:dfx
